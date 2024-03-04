@@ -78,7 +78,14 @@ sequelize.authenticate()
 const router = express.Router()
 
 //* LIST TODOS:
+router.get('/', async (req, res) => {
+    const data = await Todo.findAll()
 
+    res.status(200).send({
+        error:false,
+        result: data
+    })
+})
 
 //* CREATE TODO:
 router.post('/', async (req, res) => {
