@@ -16,11 +16,11 @@ app.use(express.json())
 // Catch async errors:
 require('express-async-errors')
 
-app.all('/', (req, res) => {  // Allow all methods. all --> URL=/  -  use --> URL=/*
-    res.send('WELCOME TO TODO API')
-})
+// app.all('/', (req, res) => {  // Allow all methods. all --> URL=/  -  use --> URL=/*
+//     res.send('WELCOME TO TODO API')
+// })
 /* ------------------------------------------------------- */
-
+//* MODELS:
 const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize('sqlite:./db.sqlite3')
@@ -73,6 +73,34 @@ const Todo = sequelize.define('todos', {
 sequelize.authenticate()
     .then(() => console.log('* DB Connected *'))
     .catch(() => console.log('* DB Not Connected *'))
+/* ------------------------------------------------------- */
+//* ROUTERS:
+const router = express.Router()
+
+//* LIST TODOS:
+
+
+//* CREATE TODO:
+router.post('/', async (req, res) => {
+
+    const receivedData = req.body
+
+    const data = await Todo.create({
+        title: receivedData.title,
+        description: receivedData.description,
+        priority: receivedData.priority,
+        isDone: receivedData.isDone,
+        newKey: 'newvalue',
+    })
+    
+    res.status(200).send({
+        error: false,
+        result: data.dataValues,
+    })
+});
+
+app.use(router)
+
 /* ------------------------------------------------------- */
 
 const errorHandler = (err, req, res, next) => {
