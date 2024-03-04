@@ -13,11 +13,19 @@ const PORT = process.env.PORT || 8000;
 // Accept json data:
 app.use(express.json())
 
-app.all('/', (req, res) => {
+// Catch async errors:
+require('express-async-errors')
+
+app.all('/', (req, res) => {  // Allow all methods. all --> URL=/  -  use --> URL=/*
     res.send('WELCOME TO TODO API')
 })
+/* ------------------------------------------------------- */
 
-// continue from here...
+const { Sequelize, DataTypes } = require('sequelize');
+
+const sequelize = new Sequelize('sqlite:')
+
+/* ------------------------------------------------------- */
 
 const errorHandler = (err, req, res, next) => {
     const errorStatusCode = res.errorStatusCode ?? 500
