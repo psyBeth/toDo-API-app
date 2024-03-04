@@ -67,8 +67,12 @@ const Todo = sequelize.define('todos', {
 // apply the model info to the database
 // sequelize.sync();  //CREATE TABLE
 // sequelize.sync({ force: true })  // DROP TABLE & CREATE TABLE
-sequelize.sync({ alter: true });   // TO BACKUP & DROP TABLE & CREATE TABLE & FROM BACKUP
+// sequelize.sync({ alter: true });   // TO BACKUP & DROP TABLE & CREATE TABLE & FROM BACKUP
 
+// connect to database:
+sequelize.authenticate()
+    .then(() => console.log('* DB Connected *'))
+    .catch(() => console.log('* DB Not Connected *'))
 /* ------------------------------------------------------- */
 
 const errorHandler = (err, req, res, next) => {
