@@ -88,6 +88,9 @@ router.get('/', async (req, res) => {
     })
 })
 
+//? CRUD Processes:
+
+
 //* CREATE TODO:
 router.post('/', async (req, res) => {
 
@@ -106,6 +109,16 @@ router.post('/', async (req, res) => {
         result: data.dataValues,
     })
 });
+
+// READ TODO
+router.get('/:id', async (req, res) =>{
+    // const data = await Todo.findOne({where: {id: req.params.id}})
+    const data = await Todo.findByPk(req.params.id)
+    res.status(200).send({
+        error: false,
+        result: data,
+    })
+})
 
 app.use(router)
 
