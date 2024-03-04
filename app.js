@@ -79,7 +79,8 @@ const router = express.Router()
 
 //* LIST TODOS:
 router.get('/', async (req, res) => {
-    const data = await Todo.findAll()
+    // const data = await Todo.findAll()
+    const data = await Todo.findAndCountAll()
 
     res.status(200).send({
         error:false,
