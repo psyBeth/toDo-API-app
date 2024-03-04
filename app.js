@@ -23,7 +23,51 @@ app.all('/', (req, res) => {  // Allow all methods. all --> URL=/  -  use --> UR
 
 const { Sequelize, DataTypes } = require('sequelize');
 
-const sequelize = new Sequelize('sqlite:')
+const sequelize = new Sequelize('sqlite:./db.sqlite3')
+
+// define method creates the sequelize model:
+// each model corresponds to a table in the database.
+// sequelize.define('tableName',{modelDetails})
+
+const Todo = sequelize.define('todos', {
+    // id: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false, //default: tue
+    //     unique: true, //default: false
+    //     comment: 'description',
+    //     primaryKey: true, //default: false
+    //     autoIncrement: true,
+    //     field: 'custom_name',
+    //     defaultValue: 'default', //default: null
+    // } 
+
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    
+    description: DataTypes.TEXT, //shorthand using 
+
+    priority: {
+        type: DataTypes.TINYINT,
+        allowNull: false,
+        default: 0,
+    },
+
+    isDone: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        default: false,
+    }
+
+    //? no need to define createdAt & updatedAt fields.
+    //? Sequelize automatically creates and manages.
+});
+// Syncronization:
+// apply the model info to the database
+// sequelize.sync();  //CREATE TABLE
+// sequelize.sync({ force: true })  // DROP TABLE & CREATE TABLE
+sequelize.sync({ alter: true });   // TO BACKUP & DROP TABLE & CREATE TABLE & FROM BACKUP
 
 /* ------------------------------------------------------- */
 
