@@ -126,7 +126,7 @@ router.get('/:id', async (req, res) =>{
 
 //* UPDATE TODO:
 router.put('/:id', async (req, res) => {
-    // const data = await Todo.update({...new data}, {where:...})
+    // const data = await Todo.update({...new data}, {...where})
     const data = await Todo.update(req.body, { where: {id: req.params.id}})
     res.status(202).send({
         error: false,
@@ -136,6 +136,17 @@ router.put('/:id', async (req, res) => {
         new: await Todo.findByPk(req.params.id)  //to see the updated data
     })
     
+})
+
+//* DELETE TODO:
+router.delete('/:id', async(req, res) => {
+    // const data = await Todo.destroy({...where})
+    const data = await Todo.destroy({where: {id: req.params.id}})
+    res.status(204).send({
+        error: false,
+        message: "deleted",
+        result: data
+    })
 })
 
 app.use(router)
