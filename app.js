@@ -65,9 +65,9 @@ const Todo = sequelize.define('todos', {
 });
 // Syncronization:
 // apply the model info to the database
-// sequelize.sync();  //CREATE TABLE
+// sequelize.sync();  //CREATE TABLE  //no existing table
 // sequelize.sync({ force: true })  // DROP TABLE & CREATE TABLE
-// sequelize.sync({ alter: true });   // TO BACKUP & DROP TABLE & CREATE TABLE & FROM BACKUP
+// sequelize.sync({ alter: true });   // TO BACKUP & DROP TABLE & CREATE TABLE & FROM BACKUP // there is an existing table that will be updated
 
 // connect to database:
 sequelize.authenticate()
