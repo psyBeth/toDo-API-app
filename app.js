@@ -110,7 +110,7 @@ router.post('/', async (req, res) => {
     })
 });
 
-// READ TODO
+//* READ TODO
 router.get('/:id', async (req, res) =>{
     // const data = await Todo.findOne({where: {id: req.params.id}})
     const data = await Todo.findByPk(req.params.id)
@@ -120,8 +120,25 @@ router.get('/:id', async (req, res) =>{
     })
 })
 
-app.use(router)
 
+
+/* ------------------------------------------------------- */
+
+//* UPDATE TODO:
+router.put('/:id', async (req, res) => {
+    // const data = await Todo.update({...new data}, {where:...})
+    const data = await Todo.update(req.body, { where: {id: req.params.id}})
+    res.status(202).send({
+        error: false,
+        message: "updated",
+        body: req.body,
+        result: data,  // quantity of updated feature
+        new: await Todo.findByPk(req.params.id)  //to see the updated data
+    })
+    
+})
+
+app.use(router)
 /* ------------------------------------------------------- */
 
 const errorHandler = (err, req, res, next) => {
