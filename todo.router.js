@@ -6,6 +6,7 @@
 
 const Todo = require('./todo.model')
 
+// const router = express.Router()
 const router = require('express').Router()
 
 // LIST TODOS:
