@@ -21,48 +21,49 @@ require('express-async-errors')
 // })
 /* ------------------------------------------------------- */
 //* MODELS:
-const { Sequelize, DataTypes } = require('sequelize');
+// const { Sequelize, DataTypes } = require('sequelize');
 
-const sequelize = new Sequelize('sqlite:./db.sqlite3')
+// const sequelize = new Sequelize('sqlite:./db.sqlite3')
 
-// define method creates the sequelize model:
-// each model corresponds to a table in the database.
-// sequelize.define('tableName',{modelDetails})
+// // define method creates the sequelize model:
+// // each model corresponds to a table in the database.
+// // sequelize.define('tableName',{modelDetails})
 
-const Todo = sequelize.define('todos', {
-    // id: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false, //default: tue
-    //     unique: true, //default: false
-    //     comment: 'description',
-    //     primaryKey: true, //default: false
-    //     autoIncrement: true,
-    //     field: 'custom_name',
-    //     defaultValue: 'default', //default: null
-    // } 
+// const Todo = sequelize.define('todos', {
+//     // id: {
+//     //     type: DataTypes.INTEGER,
+//     //     allowNull: false, //default: tue
+//     //     unique: true, //default: false
+//     //     comment: 'description',
+//     //     primaryKey: true, //default: false
+//     //     autoIncrement: true,
+//     //     field: 'custom_name',
+//     //     defaultValue: 'default', //default: null
+//     // } 
 
-    title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
+//     title: {
+//         type: DataTypes.STRING,
+//         allowNull: false,
+//     },
     
-    description: DataTypes.TEXT, //shorthand using 
+//     description: DataTypes.TEXT, //shorthand using 
 
-    priority: {
-        type: DataTypes.TINYINT,
-        allowNull: false,
-        default: 0,
-    },
+//     priority: {
+//         type: DataTypes.TINYINT,
+//         allowNull: false,
+//         default: 0,
+//     },
 
-    isDone: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        default: false,
-    }
+//     isDone: {
+//         type: DataTypes.BOOLEAN,
+//         allowNull: false,
+//         default: false,
+//     }
 
-    //? no need to define createdAt & updatedAt fields.
-    //? Sequelize automatically creates and manages.
-});
+//     //? no need to define createdAt & updatedAt fields.
+//     //? Sequelize automatically creates and manages.
+// });
+
 // Syncronization:
 // apply the model info to the database
 // sequelize.sync();  //CREATE TABLE  //no existing table
@@ -73,6 +74,11 @@ const Todo = sequelize.define('todos', {
 sequelize.authenticate()
     .then(() => console.log('* DB Connected *'))
     .catch(() => console.log('* DB Not Connected *'))
+/* ------------------------------------------------------- */
+
+//* model import 
+const Todo = require("./todo.model")
+
 /* ------------------------------------------------------- */
 //* ROUTERS:
 const router = express.Router()
