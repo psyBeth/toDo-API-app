@@ -71,16 +71,19 @@ require('express-async-errors')
 // sequelize.sync({ alter: true });   // TO BACKUP & DROP TABLE & CREATE TABLE & FROM BACKUP // there is an existing table that will be updated
 
 // connect to database:
-sequelize.authenticate()
-    .then(() => console.log('* DB Connected *'))
-    .catch(() => console.log('* DB Not Connected *'))
+// sequelize.authenticate()
+//     .then(() => console.log('* DB Connected *'))
+//     .catch(() => console.log('* DB Not Connected *'))
 /* ------------------------------------------------------- */
 
 //* model import 
-const Todo = require("./todo.model")
+// const Todo = require("./todo.model")
 
 /* ------------------------------------------------------- */
 //* ROUTERS:
+
+const Todo = require("./todo.model")
+
 const router = express.Router()
 
 //* LIST TODOS:
@@ -94,89 +97,92 @@ router.get('/', async (req, res) => {
     })
 })
 
-//? CRUD Processes:
+// //? CRUD Processes:
 
 
-//* CREATE TODO:
-router.post('/', async (req, res) => {
+// //* CREATE TODO:
+// router.post('/', async (req, res) => {
 
-    const receivedData = req.body
+//     const receivedData = req.body
 
-    const data = await Todo.create({
-        title: receivedData.title,
-        description: receivedData.description,
-        priority: receivedData.priority,
-        isDone: receivedData.isDone,
-        newKey: 'newvalue',
-    })
+//     const data = await Todo.create({
+//         title: receivedData.title,
+//         description: receivedData.description,
+//         priority: receivedData.priority,
+//         isDone: receivedData.isDone,
+//         newKey: 'newvalue',
+//     })
     
-    res.status(200).send({
-        error: false,
-        result: data.dataValues,
-    })
-});
+//     res.status(200).send({
+//         error: false,
+//         result: data.dataValues,
+//     })
+// });
 
-//* READ TODO
-router.get('/:id', async (req, res) =>{
-    // const data = await Todo.findOne({where: {id: req.params.id}})
-    const data = await Todo.findByPk(req.params.id)
-    res.status(200).send({
-        error: false,
-        result: data,
-    })
-})
+// //* READ TODO
+// router.get('/:id', async (req, res) =>{
+//     // const data = await Todo.findOne({where: {id: req.params.id}})
+//     const data = await Todo.findByPk(req.params.id)
+//     res.status(200).send({
+//         error: false,
+//         result: data,
+//     })
+// })
 
 
 
+// /* ------------------------------------------------------- */
+
+// //* UPDATE TODO:
+// router.put('/:id', async (req, res) => {
+//     // const data = await Todo.update({...new data}, {...where})
+//     const data = await Todo.update(req.body, { where: {id: req.params.id}})
+//     res.status(202).send({
+//         error: false,
+//         message: "updated",
+//         body: req.body,
+//         result: data,  // quantity of updated feature
+//         new: await Todo.findByPk(req.params.id)  //to see the updated data
+//     })
+    
+// })
+
+// /* ------------------------------------------------------- */
+
+// //* DELETE TODO:
+// router.delete('/:id', async (req, res) => {
+
+//     // const data = await Todo.destroy({ ...where })
+//     const data = await Todo.destroy({ where: { id: req.params.id } })
+//     // console.log(data)
+
+//     // //? 204 No Content -> Ekrana çıktı vermeyebilir.
+//     // res.status(204).send({
+//     //     error: false,
+//     //     message: 'Deleted',
+//     //     result: data
+//     // })
+
+//     if (data > 0) { // Silme gerçekleşti ise:
+//         // res.status(204).send()
+//         //? Sadece status çıktı ver:
+//         res.sendStatus(204)
+//     } else { // Silme gerçekleşmedi ise:
+//         // res.status(404).send({
+//         //     error: true,
+//         //     result: data
+//         // })
+
+//         //pass it to the error handler
+//         res.errorStatusCode = 400
+//         throw new Error("not found")
+//     }
+// })
+
+// app.use(router)
 /* ------------------------------------------------------- */
 
-//* UPDATE TODO:
-router.put('/:id', async (req, res) => {
-    // const data = await Todo.update({...new data}, {...where})
-    const data = await Todo.update(req.body, { where: {id: req.params.id}})
-    res.status(202).send({
-        error: false,
-        message: "updated",
-        body: req.body,
-        result: data,  // quantity of updated feature
-        new: await Todo.findByPk(req.params.id)  //to see the updated data
-    })
-    
-})
-
-/* ------------------------------------------------------- */
-
-//* DELETE TODO:
-router.delete('/:id', async (req, res) => {
-
-    // const data = await Todo.destroy({ ...where })
-    const data = await Todo.destroy({ where: { id: req.params.id } })
-    // console.log(data)
-
-    // //? 204 No Content -> Ekrana çıktı vermeyebilir.
-    // res.status(204).send({
-    //     error: false,
-    //     message: 'Deleted',
-    //     result: data
-    // })
-
-    if (data > 0) { // Silme gerçekleşti ise:
-        // res.status(204).send()
-        //? Sadece status çıktı ver:
-        res.sendStatus(204)
-    } else { // Silme gerçekleşmedi ise:
-        // res.status(404).send({
-        //     error: true,
-        //     result: data
-        // })
-
-        //pass it to the error handler
-        res.errorStatusCode = 400
-        throw new Error("not found")
-    }
-})
-
-app.use(router)
+app.use(require('./todo.router'))
 /* ------------------------------------------------------- */
 
 const errorHandler = (err, req, res, next) => {
