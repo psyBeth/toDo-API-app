@@ -37,7 +37,7 @@
                             <td><%= todo.title %></td>
                             <td><%= todo.description %></td>
                             <td><%= todo.priority %></td>
-                            <td><%= todo.isDone %></td>
+                            <td><%= (todo.isDone ? 'YES' : 'NO') %></td>
                             <td><%= todo.createdAt.toLocaleString("tr-TR",{year:"numeric",month:"long",day:"numeric"}) %></td>
                             <td>
                                 <a class="btn btn-sm btn-secondary" href="/view/id">Read</a>

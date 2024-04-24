@@ -4,7 +4,13 @@
 ------------------------------------------------------- */
 // CONTROLLERS:
 
-const Todo = require('../models/todo.model')
+const Todo = require('../models/todo.model');
+
+const PRIORITY = {
+    '-1': 'Low',
+    '0': 'Norm',
+    '1': 'High'
+}
 
 module.exports = {
 
