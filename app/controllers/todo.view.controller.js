@@ -12,13 +12,14 @@ module.exports = {
 
         // const data = await Todo.findAll()
         const data = await Todo.findAndCountAll()
+        console.log(data);
 
         // res.status(200).send({
         //     error: false,
         //     result: data
         // })
 
-        res.render('todoList');
+        res.render('todoList', { todos: data.rows, count: data.count });
     },
 
     // CRUD:
