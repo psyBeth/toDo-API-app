@@ -16,6 +16,22 @@ app.use(express.json())
 // Catch async-errors:
 require('express-async-errors')
 /* ------------------------------------------------------- */
+//* TEMPLATES - EJS
+// $ npm i ejs
+// https://ejs.co/
+// https://www.npmjs.com/package/ejs
+// https://github.com/mde/ejs/wiki/Using-EJS-with-Express
+
+// Setting template engine: 
+// console.log(app);
+app.set('view engine', 'ejs');
+
+app.all('/', (req, res) => {
+    // View Template:
+    res.render('index')
+});
+
+/* ------------------------------------------------------- */
 // Routes:
 
 app.use(require('./app/routes/todo.router'))
