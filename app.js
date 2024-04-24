@@ -11,7 +11,10 @@ const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- */
 // Accept json data and convert object:
-app.use(express.json())
+app.use(express.json());
+
+// Accept form-urlencoded:
+app.use(express.urlencoded({extended: true}));
 
 // Catch async-errors:
 require('express-async-errors')

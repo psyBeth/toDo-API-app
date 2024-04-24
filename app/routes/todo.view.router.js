@@ -10,7 +10,8 @@ const router = require('express').Router()
 
 router.get('/', todo.list);
 
-router.get('/create', todo.create);
+router.get('/create', todo.create);   // form view
+router.post('/create', todo.create);    // form send
 
 
 module.exports = router

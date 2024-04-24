@@ -49,7 +49,24 @@ module.exports = {
         //     result: data.dataValues
         // })
 
-        res.render('todoCreate', {priority: PRIORITY});
+        if(req.method == 'POST') {
+            // create
+            const data = await Todo.create(req.body);
+
+            //! no needed bcs errorHandler is working
+            // if(data){
+            //     res.redirect('/view');  // return home
+            // } else {
+            //     res.redirect('/view/create');   // create form
+            // }
+            
+            res.redirect('/view'); 
+
+        } else {
+            // view
+            res.render('todoCreate', {priority: PRIORITY});
+        };
+
     },
 
     read: async (req, res) => {
