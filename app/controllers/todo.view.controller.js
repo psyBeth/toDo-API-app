@@ -25,7 +25,7 @@ module.exports = {
         //     result: data
         // })
 
-        res.render('todoList', { todos: data.rows, count: data.count });
+        res.render('todoList', { todos: data.rows, count: data.count, priority: PRIORITY });
     },
 
     // CRUD:
