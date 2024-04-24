@@ -45,6 +45,6 @@ app.use(require('./app/routes/todo.router'))
 
 /* ------------------------------------------------------- */
 // ErrorHandler:
-app.use(require('./app/errorHandler'))
+app.use('/api', require('./app/errorHandler'))
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
