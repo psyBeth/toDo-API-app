@@ -42,12 +42,14 @@ module.exports = {
         //     // newKey: 'newValue' // Modelde tanımlanmadığı için bir işe yaramayacaktır.
         // })
 
-        const data = await Todo.create(req.body)
+        // const data = await Todo.create(req.body)
 
-        res.status(201).send({
-            error: false,
-            result: data.dataValues
-        })
+        // res.status(201).send({
+        //     error: false,
+        //     result: data.dataValues
+        // })
+
+        res.render('todoCreate', {priority: PRIORITY});
     },
 
     read: async (req, res) => {
