@@ -41,10 +41,11 @@ app.all('/', (req, res) => {
 /* ------------------------------------------------------- */
 // Routes:
 
-app.use(require('./app/routes/todo.router'))
+app.use('/api', require('./app/routes/todo.router'));
+app.use('/view', require('./app/routes/todo.view.router'));
 
 /* ------------------------------------------------------- */
 // ErrorHandler:
-app.use('/api', require('./app/errorHandler'))
+app.use(require('./app/errorHandler'))
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
