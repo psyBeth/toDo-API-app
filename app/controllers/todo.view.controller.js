@@ -18,7 +18,7 @@ module.exports = {
 
         // const data = await Todo.findAll()
         const data = await Todo.findAndCountAll()
-        console.log(data);
+        // console.log(data);
 
         // res.status(200).send({
         //     error: false,
@@ -59,7 +59,7 @@ module.exports = {
             // } else {
             //     res.redirect('/view/create');   // create form
             // }
-            
+
             res.redirect('/view'); 
 
         } else {
