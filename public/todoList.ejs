@@ -36,7 +36,7 @@
                             <td># <%= todo.id %></td>
                             <td><%= todo.title %></td>
                             <td><%= todo.description %></td>
-                            <td><%= todo.priority %></td>
+                            <td><%= priority[todo.priority] %></td>
                             <td><%= (todo.isDone ? 'YES' : 'NO') %></td>
                             <td><%= todo.createdAt.toLocaleString("tr-TR",{year:"numeric",month:"long",day:"numeric"}) %></td>
                             <td>
