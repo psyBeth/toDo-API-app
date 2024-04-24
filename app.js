@@ -27,6 +27,10 @@ require('express-async-errors')
 app.set('view engine', 'ejs');
 
 app.all('/', (req, res) => {
+    // API:
+    // res.send({
+    //     message: 'Hello'
+    // })
     // View Template:
     res.render('index')
 });
