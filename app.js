@@ -26,6 +26,9 @@ require('express-async-errors')
 // console.log(app);
 app.set('view engine', 'ejs');
 
+// default template folder: ./views/    ---- here is how to change it 
+app.set('views', './public');
+
 app.all('/', (req, res) => {
     // API:
     // res.send({
