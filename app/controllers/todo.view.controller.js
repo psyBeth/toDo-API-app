@@ -82,9 +82,9 @@ module.exports = {
         //     error: false,
         //     result: data
         // })
-        console.log(data);
+        // console.log(data.dataValues);
 
-        res.render()
+        res.render('todoRead', {todo: data.dataValues, priority: PRIORITY});
 
     },
 
