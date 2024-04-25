@@ -41,10 +41,9 @@
                             <td><%= (todo.isDone ? 'YES' : 'NO') %></td>
                             <td><%= todo.createdAt.toLocaleString("tr-TR",{year:"numeric",month:"long",day:"numeric"}) %></td>
                             <td>
-                                <a class="btn btn-sm btn-secondary" href="/view/id">Read</a>
-                                <a class="btn btn-sm btn-info" href="/view/id/update">Update</a>
-                                <a class="btn btn-sm btn-danger" href="/view/id/delete"
-                                    onclick="return confirm('Are you sure?')">Delete</a>
+                                <a class="btn btn-sm btn-secondary" href="/view/<%= todo.id %>">Read</a>
+                                <a class="btn btn-sm btn-info" href="/view/<%= todo.id %>/update">Update</a>
+                                <a class="btn btn-sm btn-danger" href="/view/<%= todo.id %>/delete" onclick="return confirm('Are you sure?')">Delete</a>
                             </td>
                         </tr>
                     <% } %>

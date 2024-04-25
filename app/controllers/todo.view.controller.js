@@ -104,7 +104,7 @@ module.exports = {
 
         if(req.method == 'POST') {
             // UPDATE:
-            const data = await Todo.update(req.body, { where: { id: req.params.id } });
+            // const data = await Todo.update(req.body, { where: { id: req.params.id } });
 
             res.redirect('/view'); 
 
