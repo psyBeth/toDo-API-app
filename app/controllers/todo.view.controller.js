@@ -91,15 +91,15 @@ module.exports = {
     update: async (req, res) => {
 
         // const data = await Todo.update({ ...newData }, { ...where })
-        const data = await Todo.update(req.body, { where: { id: req.params.id } })
+        // const data = await Todo.update(req.body, { where: { id: req.params.id } })
 
-        res.status(202).send({
-            error: false,
-            message: 'Updated',
-            body: req.body, // Gönderdiğim veriyi göster.
-            result: data,
-            new: await Todo.findByPk(req.params.id) // Güncellenmiş veriyi de göster.
-        })
+        // res.status(202).send({
+        //     error: false,
+        //     message: 'Updated',
+        //     body: req.body, // Gönderdiğim veriyi göster.
+        //     result: data,
+        //     new: await Todo.findByPk(req.params.id) // Güncellenmiş veriyi de göster.
+        // })
     },
 
     delete: async (req, res) => {
