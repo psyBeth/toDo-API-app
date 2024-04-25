@@ -13,7 +13,7 @@ router.all('/', todo.list);
 
 // router.get('/create', todo.create);   // form view
 // router.post('/create', todo.create);    // form send
-router.all('create', todo.create);
+router.all('/create', todo.create);
 
 router.all('/:id', todo.read);
 

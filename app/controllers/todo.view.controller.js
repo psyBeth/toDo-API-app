@@ -82,9 +82,9 @@ module.exports = {
         //     error: false,
         //     result: data
         // })
-        // console.log(data.dataValues);
+        console.log(data.dataValues);
 
-        res.render('todoRead', {todo: data.dataValues, priority: PRIORITY});
+        res.render('todoRead', { todo: data.dataValues, priority: PRIORITY })
 
     },
 
@@ -104,6 +104,7 @@ module.exports = {
 
         if(req.method == 'POST') {
             // UPDATE:
+            const data = await Todo.update(req.body, { where: { id: req.params.id } });
 
             res.redirect('/view'); 
 
@@ -111,7 +112,7 @@ module.exports = {
             // view
             const data = await Todo.findByPk(req.params.id);
 
-            res.render('todoUpdate', {todo: data.dataValues, priority: PRIORITY});
+            res.render('todoUpdate', { todo: data.dataValues, priority: PRIORITY });
         };
     },
 
