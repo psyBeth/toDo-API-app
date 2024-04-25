@@ -82,7 +82,7 @@ module.exports = {
         //     error: false,
         //     result: data
         // })
-        console.log(data.dataValues);
+        // console.log(data.dataValues);
 
         res.render('todoRead', { todo: data.dataValues, priority: PRIORITY })
 
@@ -129,16 +129,11 @@ module.exports = {
         //     result: data
         // })
 
-        if (data > 0) { // Silme gerçekleşti ise:
-            // res.status(204).send()
-            //? Sadece status çıktı ver:
-            res.sendStatus(204)
-        } else { // Silme gerçekleşmedi ise:
-            // res.status(404).send({
-            //     error: true,
-            //     result: data
-            // })
-            //? ErrorHandler'a havale edebilirim:
+        if (data > 0) { 
+
+            res.redirect('/view');
+
+        } else { 
             res.errorStatusCode = 404
             throw new Error('Not Found.')
         }
