@@ -100,6 +100,19 @@ module.exports = {
         //     result: data,
         //     new: await Todo.findByPk(req.params.id) // Güncellenmiş veriyi de göster.
         // })
+
+
+        if(req.method == 'POST') {
+            // UPDATE:
+
+            res.redirect('/view'); 
+
+        } else {
+            // view
+            const data = await Todo.findByPk(req.params.id);
+
+            res.render('todoUpdate', {todo: data.dataValues, priority: PRIORITY});
+        };
     },
 
     delete: async (req, res) => {
