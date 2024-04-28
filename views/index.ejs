@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Wellcome to Home!</h1>
+    <pre>
+        <!-- running JS -->
+        <% console.log('template running') %>
+        <!-- safe-print to html -->
+        <%= '<p><b> Text </b></p>' %>
+        <%= 2 + 5 %>
+        <!-- direct-print to html -->
+        <%- '<p><b> Text </b></p>' %>
+        <!-- comment - no print -->
+        <%# this is my comment line %>
+        <!-- cancel template code (tag) -->
+        <%% no template %>
+        <!-- direct-print to html -->
+        <%- '<p><b> Text </b></p>' -%>
+    </pre>
+</body>
+
+</html>
