@@ -16,6 +16,10 @@ app.use(express.json())
 // Catch async-errors:
 require('express-async-errors')
 /* ------------------------------------------------------- */
+//* TEMPLATE
+app.set('view engine', 'ejs');
+
+/* ------------------------------------------------------- */
 // Routes:
 
 app.use(require('./app/routes/todo.router'))
